@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta charset="utf-8">
+<title>Displaying your most used threewords.me words as a list with YQL</title>
+<style type="text/css" media="screen">
+  html{font-family:arial,sans-serif;font-size:14px;}
+  body{margin:2em;}
+  header,footer,section{display:block;}
+  h1{font-size:20px;margin:10px 0;color:#060;}
+  h2{font-size:16px;margin:10px 0;color:#090;}
+  a{color:#369;}
+  a span{font-weight:bold;padding-right:1em;}
+  ol li{display:inline;padding-right:1em;color:#666;font-weight:bold;}
+  ol{margin:1em 0;padding:0;}
+  footer{margin:2em 0;font-size:10px;color:#ccc;}
+</style>
+</head>
+<body>
+  <div id="boundary">
+  <header><h1>Displaying your most used threewords.me words as a list with YQL</h1></header>
+  <section>
+    <h2>Example:</h2>
+    <div><a href="http://threewords.me/chrisheilmann" id="threewordsme">What people are saying about me on threewords.me</a></div>
+    <script src="threewords.js"></script>
+
+    <h2>Code:</h2>
+<pre><code>&lt;div&gt;&lt;a href=&quot;http://threewords.me/chrisheilmann&quot; id=&quot;threewordsme&quot;&gt;
+  What people are saying about me on threewords.me
+&lt;/a&gt;&lt;/div&gt;
+&lt;script src=&quot;threewords.js&quot;&gt;&lt;/script&gt;</code></pre>
+
+
+    <h2>YQL:</h2>
+<pre><code>select * from html where 
+url="http://threewords.me/chrisheilmann" and 
+xpath="//strong" 
+| unique(field="strong") 
+| sort(field="yahoo:repeatcount") 
+| reverse()</code></pre>    
+    <p><a href="http://y.ahoo.it/6AECtE+A">Try in console</a></p>
+  </section>
+  <footer>Written by Chris Heilmann, powered by YQL</footer>
+  </div>
+</body>
+</html>
